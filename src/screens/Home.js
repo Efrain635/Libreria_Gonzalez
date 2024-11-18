@@ -1,6 +1,6 @@
 // screens/Home.js
 import React, { useState, useEffect } from 'react';
-import { View, FlatList, Text, StyleSheet } from 'react-native';
+import { View, FlatList, Text, StyleSheet, Image } from 'react-native';
 import { db } from '../../db/firebaseconfig';
 import { collection, getDocs } from 'firebase/firestore';
 import BookCard from '../components/BookCard';
@@ -25,6 +25,12 @@ const Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      {/* Imagen de fondo centrada */}
+      <Image
+        source={require('../../Imagenes/Logo.jpg')} // Asegúrate de que la imagen exista en esta ruta.
+        style={styles.backgroundImage}
+      />
+
       <Text style={styles.title}>Bienvenido a la Librería</Text>
       <FlatList
         data={books}
@@ -34,7 +40,7 @@ const Home = ({ navigation }) => {
             title={item.title}
             author={item.author}
             image={item.image}
-            onPress={() => handlePress(item)} // Aquí se usa `navigation`
+            onPress={() => handlePress(item)}
           />
         )}
       />
@@ -53,6 +59,14 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center', // Centrar el texto
+  },
+  backgroundImage: {
+    width: 200, // Tamaño mediano
+    height: 200,
+    resizeMode: 'contain', // Ajustar sin distorsión
+    alignSelf: 'center', // Centrar horizontalmente
+    marginBottom: 20, // Espacio debajo de la imagen
   },
 });
 
