@@ -4,7 +4,7 @@ import { View, FlatList, Text, StyleSheet, Image } from 'react-native';
 import { db } from '../../db/firebaseconfig';
 import { collection, getDocs } from 'firebase/firestore';
 import BookCard from '../components/BookCard';
-import Button from '../components/Button';
+
 
 const Home = ({ navigation }) => {
   const [books, setBooks] = useState([]);
@@ -20,7 +20,7 @@ const Home = ({ navigation }) => {
 
   const handlePress = (book) => {
     // Redirigir a la pantalla de detalles
-    navigation.navigate('Detalles', { book });
+    navigation.navigate('Detalles', { Libros });
   };
 
   return (
@@ -44,7 +44,6 @@ const Home = ({ navigation }) => {
           />
         )}
       />
-      <Button title="Agregar Libro" onPress={() => navigation.navigate('AgregarLibro')} />
     </View>
   );
 };
